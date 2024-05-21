@@ -1,0 +1,348 @@
+{
+    "swagger":"2.0",
+    "info":
+    {
+        "title":"Parent Follow Up",
+        "description":" API for Parent follow up",
+        "contact":
+        {
+"email":"espebobalexiz@gmail.com"
+        },
+        "license":{
+            "name":"MIT",
+            "url":"http://www.opensource.org/licenses/mit"
+        },
+        "version":"1.0.0"
+    },
+    "externalDocs":
+    {
+        "url":"https://github.com/Espebob/Parent-Follow-Up-Backend.git",
+        "description":"Find more info here"
+    },
+    "basePath":"/parent",
+    "servers":[
+        {
+            "url":"http://localhost:3500",
+            "description":"Local server"
+        },
+        {
+            "url":"https://parent_follow_up.onrender.com",
+            "description":"production server"
+        }
+    ],
+    "schemes":["http","https"],
+    "tags":[
+        {
+            "name":"parent follow up",
+            "description":"Operations on parents assistants"
+        }
+    ],
+    "paths":
+    {
+        "/user/signup":
+        {
+            "post":{
+              "tags":["SignUp"],
+              "summary":"Create a new user account",
+              "description":"new user to the system",
+              "parameters": [
+                {
+                    "name": "body",
+                    "in": "body",
+                    "required": true,
+                    "schema": {
+                        "$ref": "#/components/schemas/User"
+                    }
+                }
+            ],
+              "requestBody":{
+                "content":{
+                  "application/json":{
+                    "schema":{
+                      "$ref":"#/components/schemas/User"
+                    }
+                  }
+                }
+              },
+              "responses":{
+                "201":{
+                  "description":"User created",
+                  "content":{
+                    "application/json":{
+                      "schema":{
+                        "$ref":"#/components/schemas/User"
+                      }
+                    }
+                  }
+                },
+                "400":{
+                  "description":"Bad request -Validation error",
+                  "content":{
+                    "application/json":{
+                      "schema":{
+                        "type":"object",
+                        "properties":{
+                          "message":{
+                            "type":"string"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+        },
+        "/user/signin":
+        {
+            "post":{
+      "tags":["SignIn"],
+      "summary":"User Signin in the system",
+      "description":"signin",
+      "parameters": [
+        {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+                "$ref": "#/components/schemas/User"
+            }
+        }],
+        "requestBody":{
+            "content":{
+                "application/json":{
+                    "schema":{
+                        "$ref":"#/components/schemas/User"
+                    }
+                }
+            }
+        },
+        "responses":{
+            "200":{
+                "description":"User logged in successfully",
+                "content":{
+                  "application/json":{
+                    "schema":{
+                      "$ref":"#/components/schemas/User"
+                    }
+                  }
+                }
+              },
+              "400":{
+                "description":"Bad request -Validation error",
+                "content":{
+                  "application/json":{
+                    "schema":{
+                      "type":"object",
+                      "properties":{
+                        "message":{
+                          "type":"string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+        
+        }
+        
+    
+}
+        },
+
+        "/user/verify":
+    {
+        "post":{
+            "tags":["OTP_Verification"],
+            "summary":"Verify a user",
+            "description":"Verify a user",
+            "parameters": [
+                {
+                    "name": "body",
+                    "in": "body",
+                    "required": true,
+                    "schema": {
+                        "$ref": "#/components/schemas/User"
+                    }
+                }],
+                "requestBody":{
+                    "content":{
+                        "application/json":{
+                            "schema":{
+                                "$ref":"#/components/schemas/User"
+                            }
+                        }
+                    }
+                },
+                "responses":{
+                    "200":{
+                        "description":"Otp was verified",
+                        "content":{
+                          "application/json":{
+                            "schema":{
+                              "$ref":"#/components/schemas/User"
+                            }
+                          }
+                        }
+                      },
+                      "400":{
+                        "description":"Bad request -Validation error",
+                        "content":{
+                          "application/json":{
+                            "schema":{
+                              "type":"object",
+                              "properties":{
+                                "message":{
+                                  "type":"string"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                }
+        }
+    },
+    "/user/forgotpassword":
+    {
+        "post":{
+        "tags":["Forget_Password"],
+        "summary":"Forgot password",
+        "description":"Forgot password",
+        "parameters": [
+            {
+                "name": "body",
+                "in": "body",
+                "required": true,
+                "schema": {
+                    "$ref": "#/components/schemas/User"
+                }
+            }],
+            "requestBody":{
+                "content":{
+                    "application/json":{
+                        "schema":{
+                            "$ref":"#/components/schemas/User"
+                        }
+                    }
+                }
+            },
+            "responses":{
+                "200":{
+                    "description":"Forgot password was successfully",
+                    "content":{
+                      "application/json":{
+                        "schema":{
+                          "$ref":"#/components/schemas/User"
+                        }
+                      }
+                    }
+                  },
+                  "400":{
+                    "description":"Bad request -Validation error",
+                    "content":{
+                      "application/json":{
+                        "schema":{
+                          "type":"object",
+                          "properties":{
+                            "message":{
+                              "type":"string"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+            }
+    }
+},
+    "/user/resetpassword":{
+        "post":{
+            "tags":["Reset_Password"],
+            "summary":"Reset password",
+            "description":"Reset password",
+            "parameters": [
+                {
+                    "name": "body",
+                    "in": "body",
+                    "required": true,
+                    "schema": {
+                        "$ref": "#/components/schemas/User"
+                    }
+                }],
+                "requestBody":{
+                    "content":{
+                        "application/json":{
+                            "schema":{
+                                "$ref":"#/components/schemas/User"
+                            }
+                        }
+                    }
+                },
+                "responses":{
+                    "200":{
+                        "description":"Password was reset successfully",
+                        "content":{
+                          "application/json":{
+                            "schema":{
+                              "$ref":"#/components/schemas/User"
+                            }
+                          }
+                        }
+                      },
+                      "400":{
+                        "description":"Bad request -Validation error",
+                        "content":{
+                          "application/json":{
+                            "schema":{
+                              "type":"object",
+                              "properties":{
+                                "message":{
+                                  "type":"string"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                }
+        }
+    }
+    },
+    "components":{
+        "schemas":
+        {
+            "User":
+            {
+                "type":"object",
+                "properties":
+                {
+                    "name":{
+                        "type":"string",
+                        "description":"name of the User"
+                    },
+                    "email":{
+                        "type":"string",
+                        "description":"email of the User"
+                    },
+                    "password":{
+                        "type":"string",
+                        "description":"password of the User"
+                    },
+                    "role":
+                    {
+                        "type":"string",
+                        "description":"role of the User",
+                        "default":"user"
+
+                    }
+                },
+                "required":["password","email","role","name"]
+            }
+        }
+    }
+
+ }
+
+ 
+
