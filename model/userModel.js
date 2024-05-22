@@ -20,8 +20,8 @@ const userSchema=new schema({
         type:String,
         required:true,
         enum:{
-            values:['admin', 'user'],
-            message:'Role must be admin or user.'
+            values:['admin', 'parent', 'instructor'],
+            message:'Role must be admin, parent or instructor'
         },
         default:'user'
     },
