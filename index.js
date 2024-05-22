@@ -5,6 +5,7 @@ import errorHandler from './middleware/errorhandler.js';
 import dotenv from 'dotenv';
 import documentation from "./doc/swagger.json" assert{type:"json"};
 import swaggerUi from "swagger-ui-express"
+;
 
 
 dotenv.config()

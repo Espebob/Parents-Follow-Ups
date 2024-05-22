@@ -7,7 +7,7 @@
   "scripts": {
     "start": "node --no-warnings index.js",
     "dev": "nodemon --no-warnings index.js",
-    "build":"node "
+    "build":"npm install"
   },
   "keywords": [],
   "author": "",
