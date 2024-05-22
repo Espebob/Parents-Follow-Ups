@@ -1,7 +1,8 @@
 import serviceModel from "../model/service.model.js";
-import { NotFoundError, BadRequestError } from "../error/index.js";
 import { validationResult } from "express-validator";
 import asyncWrapper from "../middleware/async.js";
+import { BadRequestError } from "../error/BadRequestError.js";
+import { NotFoundError } from "../error/NotFoundError.js";
 
 export const test = (req, res, next) => {
     res.send('hello');

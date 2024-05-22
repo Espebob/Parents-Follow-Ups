@@ -2,13 +2,13 @@ import UserModel from "../model/userModel.js";
 import asyncWrapper from "../middleware/async.js";
 import { otpGenerator } from "../utils/otp.js";
 import {UnauthorizedError} from '../error/Unauthorized.js'
-import {BadRequestError,NotFoundError} from "../error/index.js";
 import {validationResult} from 'express-validator';
 import {sendEmail} from '../utils/sendEmail.js';
 import bcryptjs from 'bcryptjs';
 import jwt from "jsonwebtoken";
 import Token from "../model/authTokenModel.js";
 import dotenv from "dotenv"
+import { BadRequestError } from "../error/BadRequestError.js";
 dotenv.config();
 
 export const SignUp=asyncWrapper(async(req,res,next)=>
