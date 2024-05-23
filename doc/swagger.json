@@ -153,7 +153,7 @@
         "/user/verify":
     {
         "post":{
-            "tags":["OTP_Verification"],
+            "tags":["OTP Verification"],
             "summary":"Verify a user",
             "description":"Verify a user",
             "parameters": [
@@ -206,7 +206,7 @@
     "/user/forgotpassword":
     {
         "post":{
-        "tags":["Forget_Password"],
+        "tags":["Forget Password"],
         "summary":"Forgot password",
         "description":"Forgot password",
         "parameters": [
@@ -258,7 +258,7 @@
 },
     "/user/resetpassword":{
         "post":{
-            "tags":["Reset_Password"],
+            "tags":["Reset Password"],
             "summary":"Reset password",
             "description":"Reset password",
             "parameters": [
@@ -312,7 +312,7 @@
     "/course/add": {
       "post": {
         "tags": [
-          "Add_Course"
+          "Add a Course"
         ],
         "summary": "Add a new service",
         "description": "add a new course with  the provided details",
@@ -367,7 +367,7 @@
 "/course/list": {
       "get": {
         "tags": [
-          "List_Courses"
+          "List all Courses"
         ],
         "summary": "Get all courses",
         "description": "Returns all the courses",
@@ -391,7 +391,7 @@
     "/course/get/{id}": {
       "get": {
         "tags": [
-          "Get_course_Id"
+          "Get courseById"
         ],
         "summary": "Get a course by id",
         "description": "Returns a course with the provided id",
@@ -437,7 +437,7 @@
     "/course/getByCategory/{category}":{
       "get":
       {
-          "tags":["Get_course_ByCategory"],
+          "tags":["Get course ByCategory"],
           "summary":"Get a course by category",
           "description":"Returns a course with the provided courseName",
           "parameters":[
@@ -491,7 +491,7 @@
 "/course/update/{id}":
 {
   "put":{
-      "tags": ["Updatge_Course"],
+      "tags": ["Update Course"],
           "summary": "Update course",
           "description": "Updates course with the provided details",
           "parameters": [
@@ -553,7 +553,7 @@
 "/course/delete/{id}":{
   "delete":
   {
-      "tags":["Delete_Course"],
+      "tags":["Delete Course"],
       "summary":"Delete a course",
       "description":"Delete a course with the provided id",
       "parameters":[
@@ -602,7 +602,7 @@
         "/parents/add": {
           "post": {
             "tags": [
-              "add_parent"
+              "Add a parent"
             ],
             "summary": "Add a new parent",
             "description": "add a new parent with  the provided details",
@@ -657,7 +657,7 @@
     "/parents/list": {
           "get": {
             "tags": [
-              "List_parents"
+              "List parents"
             ],
             "summary": "Get all parents",
             "description": "Returns all the parents",
@@ -683,7 +683,7 @@
         "/parents/get/{id}": {
           "get": {
             "tags": [
-              "Get_ParentById"
+              "Get ParentById"
             ],
             "summary": "Get a parent by id",
             "description": "Returns a parent with the provided id",
@@ -729,7 +729,7 @@
         "/parents/getByCategory/{category}":{
           "get":
           {
-            "tags":["Get_ParentsByCategory"],
+            "tags":["Get ParentsByCategory"],
             "summary":"Get a parent by course category",
             "description":"Returns a parent with the provided courseCategory",
             "parameters":[
@@ -773,7 +773,7 @@
               },
         "/parents/update/{id}": {
           "put":{
-            "tags": ["Update_Parent"],
+            "tags": ["Update Parent"],
                 "summary": "Update parent",
                 "description": "Update parent with the provided details",
                 "parameters": [
@@ -835,7 +835,7 @@
         "/parents/delete/{id}": {
           "delete": {
             "tags": [
-              "Delete_Parent"
+              "Delete Parent"
             ],
             "summary": "Delete a parent",
             "description": "Delete a parent with the provided id",
