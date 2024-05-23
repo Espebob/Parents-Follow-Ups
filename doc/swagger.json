@@ -904,6 +904,10 @@
                         "type":"string",
                         "description":"password of the User"
                     },
+                    "confirmPassword":{
+                      "type":"string",
+                      "description":"password of the User"
+                  },
                     "role":
                     {
                         "type":"string",

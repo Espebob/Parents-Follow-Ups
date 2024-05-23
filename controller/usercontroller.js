@@ -20,6 +20,13 @@ export const SignUp=asyncWrapper(async(req,res,next)=>
         console.log(errors.array());
          next(new BadRequestError(errors.array()[0].msg))
     }
+        
+     
+    // Check if passwords match
+    if (req.body.password !== req.body.confirmPassword) {
+        return next(new BadRequestError("Passwords do not match"));
+    }
+
     // checking  if user is alreeady in using the email
     const FounderUser=await UserModel.findOne({email:req.body.email})
     if(FounderUser)
@@ -89,6 +96,7 @@ export const SignIn=asyncWrapper(async(req,res,next)=>
     {
         return next(new BadRequestError(errors.array()[0].msg))
     }
+
     //find User
     const FoundUser=await UserModel.findOne({email:req.body.email})
     if(!FoundUser)
@@ -97,10 +105,10 @@ export const SignIn=asyncWrapper(async(req,res,next)=>
 
     };
     //check account verification
-    // if(!FoundUser)
-    // {
-    //     return next(new BadRequestError('Account is not verified'))
-    // }
+     if(FoundUser.verified==false)
+     {
+         return next(new BadRequestError('Account is not verified'))
+     }
     //Verify password
     const isPasswordVerified= await bcryptjs.compareSync(req.body.password,FoundUser.password)
     if(!isPasswordVerified)
@@ -171,6 +179,12 @@ export const ResetPassword = asyncWrapper(async (req, res, next) => {
     if (!errors.isEmpty()) {
         return next(new BadRequestError(errors.array()[0].msg));
     };
+
+        // Check if passwords match
+    if (req.body.password !== req.body.confirmPassword) {
+        return next(new BadRequestError("Passwords do not match"));
+    }
+
     // Verify token
     const decoded = await jwt.verify(req.body.token, process.env.JWT_SECRET_KEY);
     if (!decoded) {

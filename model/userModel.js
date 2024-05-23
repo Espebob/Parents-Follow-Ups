@@ -16,14 +16,20 @@ const userSchema=new schema({
         type:String,
         required:true
     },
+
+    confirmPassword:{
+        type:String,
+        required:false
+    },
+
     role:{
         type:String,
         required:true,
         enum:{
-            values:['admin', 'parent', 'instructor'],
-            message:'Role must be instructor or parent '
+            values:['parent', 'instructor'],
+            message:'Role must be parent or instructor'
         },
-        default:'instruct or parent'
+        default:'instructor'
     },
     
     otp:{
