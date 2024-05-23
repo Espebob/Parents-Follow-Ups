@@ -51,7 +51,7 @@ export const test = (req, res, next) => {
     }
 
     export const findCourseCategory = async (req, res, next) => {
-        const courseCategory = req.params.category;
+        const courseCategory = req.query.category;
         
         try {
             const foundCourse = await courseModel.find({category: courseCategory});
