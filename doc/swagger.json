@@ -42,9 +42,9 @@
         "/user/signup":
         {
             "post":{
-              "tags":["SignUp"],
-              "summary":"Create a new user account",
-              "description":"new user to the system",
+              "tags":["user"],
+              "summary":"new user to the system",
+              "description":"signup",
               "parameters": [
                 {
                     "name": "body",
@@ -96,7 +96,7 @@
         "/user/signin":
         {
             "post":{
-      "tags":["SignIn"],
+      "tags":["user"],
       "summary":"User Signin in the system",
       "description":"signin",
       "parameters": [
@@ -153,9 +153,9 @@
         "/user/verify":
     {
         "post":{
-            "tags":["OTP Verification"],
+            "tags":["user"],
             "summary":"Verify a user",
-            "description":"Verify a user",
+            "description":"OTP Verification",
             "parameters": [
                 {
                     "name": "body",
@@ -206,7 +206,7 @@
     "/user/forgotpassword":
     {
         "post":{
-        "tags":["Forget Password"],
+        "tags":["user"],
         "summary":"Forgot password",
         "description":"Forgot password",
         "parameters": [
@@ -258,7 +258,7 @@
 },
     "/user/resetpassword":{
         "post":{
-            "tags":["Reset Password"],
+            "tags":["user"],
             "summary":"Reset password",
             "description":"Reset password",
             "parameters": [
@@ -312,7 +312,7 @@
     "/course/add": {
       "post": {
         "tags": [
-          "Add a Course"
+          "course"
         ],
         "summary": "Add a new service",
         "description": "add a new course with  the provided details",
@@ -367,7 +367,7 @@
 "/course/list": {
       "get": {
         "tags": [
-          "List all Courses"
+          "course"
         ],
         "summary": "Get all courses",
         "description": "Returns all the courses",
@@ -391,7 +391,7 @@
     "/course/get/{id}": {
       "get": {
         "tags": [
-          "Get courseById"
+          "course"
         ],
         "summary": "Get a course by id",
         "description": "Returns a course with the provided id",
@@ -437,9 +437,9 @@
     "/course/getByCategory/{category}":{
       "get":
       {
-          "tags":["Get course ByCategory"],
+          "tags":["course"],
           "summary":"Get a course by category",
-          "description":"Returns a course with the provided courseName",
+          "description":"Returns a course with the provided courseCategory",
           "parameters":[
               {
                 "name": "category",
@@ -491,7 +491,7 @@
 "/course/update/{id}":
 {
   "put":{
-      "tags": ["Update Course"],
+      "tags": ["course"],
           "summary": "Update course",
           "description": "Updates course with the provided details",
           "parameters": [
@@ -553,7 +553,7 @@
 "/course/delete/{id}":{
   "delete":
   {
-      "tags":["Delete Course"],
+      "tags":["course"],
       "summary":"Delete a course",
       "description":"Delete a course with the provided id",
       "parameters":[
@@ -602,7 +602,7 @@
         "/parents/add": {
           "post": {
             "tags": [
-              "Add a parent"
+              "parent"
             ],
             "summary": "Add a new parent",
             "description": "add a new parent with  the provided details",
@@ -657,7 +657,7 @@
     "/parents/list": {
           "get": {
             "tags": [
-              "List parents"
+              "parent"
             ],
             "summary": "Get all parents",
             "description": "Returns all the parents",
@@ -683,7 +683,7 @@
         "/parents/get/{id}": {
           "get": {
             "tags": [
-              "Get ParentById"
+              "parent"
             ],
             "summary": "Get a parent by id",
             "description": "Returns a parent with the provided id",
@@ -729,7 +729,7 @@
         "/parents/getByCategory/{category}":{
           "get":
           {
-            "tags":["Get ParentsByCategory"],
+            "tags":["parent"],
             "summary":"Get a parent by course category",
             "description":"Returns a parent with the provided courseCategory",
             "parameters":[
@@ -773,7 +773,7 @@
               },
         "/parents/update/{id}": {
           "put":{
-            "tags": ["Update Parent"],
+            "tags": ["parent"],
                 "summary": "Update parent",
                 "description": "Update parent with the provided details",
                 "parameters": [
@@ -835,7 +835,7 @@
         "/parents/delete/{id}": {
           "delete": {
             "tags": [
-              "Delete Parent"
+              "parent"
             ],
             "summary": "Delete a parent",
             "description": "Delete a parent with the provided id",
