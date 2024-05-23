@@ -21,9 +21,9 @@ const userSchema=new schema({
         required:true,
         enum:{
             values:['admin', 'parent', 'instructor'],
-            message:'Role must be admin, parent or instructor'
+            message:'Role must be instructor or parent '
         },
-        default:'user'
+        default:'instruct or parent'
     },
     
     otp:{

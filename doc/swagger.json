@@ -16,7 +16,7 @@
     },
     "externalDocs":
     {
-        "url":"https://github.com/Espebob/Parent-Follow-Up-Backend.git",
+        "url":"https://github.com/Espebob/Parents-Follow-Ups.git",
         "description":"Find more info here"
     },
     "basePath":"/parent",
@@ -26,7 +26,7 @@
             "description":"Local server"
         },
         {
-            "url":"https://parent_follow_up.onrender.com",
+            "url":"https://parents-follow-u.onrender.com",
             "description":"production server"
         }
     ],
@@ -307,8 +307,583 @@
                       }
                 }
         }
-    }
     },
+   
+    "/course/add": {
+      "post": {
+        "tags": [
+          "Add_Course"
+        ],
+        "summary": "Add a new service",
+        "description": "add a new course with  the provided details",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/Courses"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Courses"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Course added successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Courses"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request -Validation error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+"/course/list": {
+      "get": {
+        "tags": [
+          "List_Courses"
+        ],
+        "summary": "Get all courses",
+        "description": "Returns all the courses",
+        "responses": {
+          "200": {
+            "description": "All the courses",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Courses"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/course/get/{id}": {
+      "get": {
+        "tags": [
+          "Get_course_Id"
+        ],
+        "summary": "Get a course by id",
+        "description": "Returns a course with the provided id",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "course found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Courses"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "course not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/course/getByCategory/{category}":{
+      "get":
+      {
+          "tags":["Get_course_ByCategory"],
+          "summary":"Get a course by category",
+          "description":"Returns a course with the provided courseName",
+          "parameters":[
+              {
+                "name": "category",
+                "in": "path",
+                "required": true,
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            ],
+            "requestBody": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/User"
+                  }
+                }
+              }
+            },
+            "responses": {
+              "200": {
+                "description": "course found",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "$ref": "#/components/schemas/User"
+                    }
+                  }
+                }
+              },
+              "400": {
+                "description": "Bad request -Validation error",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "type": "object",
+                      "properties": {
+                        "message": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+"/course/update/{id}":
+{
+  "put":{
+      "tags": ["Updatge_Course"],
+          "summary": "Update course",
+          "description": "Updates course with the provided details",
+          "parameters": [
+              {
+                  "name": "body",
+                  "in": "body",
+                  "required": true,
+                  "schema": {
+                      "$ref": "#/components/schemas/Courses"
+                  }
+              },
+              {
+                  "name": "id",
+                  "in": "path",
+                  "required": true,
+                  "schema": {
+                      "type": "string"
+                  }
+              }
+          ],
+          "requestBody": {
+              "content": {
+                  "application/json": {
+                      "schema": {
+                          "$ref": "#/components/schemas/Courses"
+                      }
+                  }
+              }
+          },
+          "responses": {
+              "200": {
+                  "description": "course Updated",
+                  "content": {
+                      "application/json": {
+                          "schema": {
+                              "$ref": "#/components/schemas/Courses"
+                          }
+                      }
+                  }
+              },
+              "404": {
+                  "description": "Course not found",
+                  "content": {
+                      "application/json": {
+                          "schema": {
+                              "type": "object",
+                              "properties": {
+                                  "message": {
+                                      "type": "string"
+                                  }
+                              }
+                          }
+                      }
+                  }
+              }
+          }
+  }
+},
+"/course/delete/{id}":{
+  "delete":
+  {
+      "tags":["Delete_Course"],
+      "summary":"Delete a course",
+      "description":"Delete a course with the provided id",
+      "parameters":[
+          {
+              "name":"id",
+              "in":"path",
+              "required":true,
+              "schema":{
+                  "type":"string"
+              }
+          }
+      ],
+      "responses":{
+          "200":
+          {
+              "description":"course deleted",
+              "content":{
+                  "application/json":
+                  {
+                      "schema":{
+                          "$ref":"#/components/schemas/Courses"
+                      }
+                  }
+              }
+          },
+          "404":
+          {
+              "description":"Course not found",
+              "content":{
+                  "application/json":{
+                      "schema":{
+                          "type": "object",
+                          "properties":{
+                              "message":{
+                                  "type":"string"
+                              }
+                          }
+                      }
+                  }
+                }
+              }
+            }
+          }
+        },
+
+        "/parents/add": {
+          "post": {
+            "tags": [
+              "add_parent"
+            ],
+            "summary": "Add a new parent",
+            "description": "add a new parent with  the provided details",
+            "parameters": [
+              {
+                "name": "body",
+                "in": "body",
+                "required": true,
+                "schema": {
+                  "$ref": "#/components/schemas/Parents"
+                }
+              }
+            ],
+            "requestBody": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Parents"
+                  }
+                }
+              }
+            },
+            "responses": {
+              "201": {
+                "description": "Parent added successfully",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "$ref": "#/components/schemas/Parents"
+                    }
+                  }
+                }
+              },
+              "400": {
+                "description": "Bad request -Validation error",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "type": "object",
+                      "properties": {
+                        "message": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+    "/parents/list": {
+          "get": {
+            "tags": [
+              "List_parents"
+            ],
+            "summary": "Get all parents",
+            "description": "Returns all the parents",
+            "responses": {
+              "200": {
+                "description": "All the parents",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Parenst"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+    
+    
+        "/parents/get/{id}": {
+          "get": {
+            "tags": [
+              "Get_ParentById"
+            ],
+            "summary": "Get a parent by id",
+            "description": "Returns a parent with the provided id",
+            "parameters": [
+              {
+                "name": "id",
+                "in": "path",
+                "required": true,
+                "schema": {
+                  "type": "string"
+                }
+              }
+            ],
+            "responses": {
+              "200": {
+                "description": "parent found",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "$ref": "#/components/schemas/Parents"
+                    }
+                  }
+                }
+              },
+              "404": {
+                "description": "parent not found",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "type": "object",
+                      "properties": {
+                        "message": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "/parents/getByCategory/{category}":{
+          "get":
+          {
+            "tags":["Get_ParentsByCategory"],
+            "summary":"Get a parent by course category",
+            "description":"Returns a parent with the provided courseCategory",
+            "parameters":[
+                {
+                    "name":"category",
+                    "in":"path",
+                    "required":true,
+                    "schema":{
+                        "type":"string"
+                    }
+                  }
+                  ],
+                  "responses": {
+                    "200": {
+                      "description": "parent found",
+                      "content": {
+                        "application/json": {
+                          "schema": {
+                            "$ref": "#/components/schemas/Courses"
+                          }
+                        }
+                      }
+                    },
+                    "404": {
+                      "description": "parent not found",
+                      "content": {
+                        "application/json": {
+                          "schema": {
+                            "type": "object",
+                            "properties": {
+                              "message": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+        "/parents/update/{id}": {
+          "put":{
+            "tags": ["Update_Parent"],
+                "summary": "Update parent",
+                "description": "Update parent with the provided details",
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/components/schemas/parents"
+                        }
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/parents"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Parent Updated",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/parents"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "parent not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+        }
+        },
+        "/parents/delete/{id}": {
+          "delete": {
+            "tags": [
+              "Delete_Parent"
+            ],
+            "summary": "Delete a parent",
+            "description": "Delete a parent with the provided id",
+            "parameters": [
+              {
+                "name": "id",
+                "in": "path",
+                "required": true,
+                "schema": {
+                  "type": "string"
+                }
+              }
+            ],
+            "responses": {
+              "200": {
+                "description": "parent deleted",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "$ref": "#/components/schemas/parents"
+                    }
+                  }
+                }
+              },
+              "404": {
+                "description": "parent not found",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "type": "object",
+                      "properties": {
+                        "message": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+    
+   
+
+
+    
     "components":{
         "schemas":
         {
@@ -333,16 +908,112 @@
                     {
                         "type":"string",
                         "description":"role of the User",
-                        "default":"user"
+                        "default":"instructor or parent"
 
                     }
                 },
                 "required":["password","email","role","name"]
+            },
+            
+            "Courses": {
+              "type": "object",
+              "properties": {
+                "tittle": {
+                  "type": "string",
+                  "description": "tittle of the course"
+                },
+                "description": {
+                  "type": "string",
+                  "description": "Summary of what the course is about"
+                },
+                "category": {
+                  "type": "string",
+                  "enum": [
+                    "Grade 1",
+                    "Grade 2",
+                    "Grade 3",
+                    "Grade 4",
+                    "Grade 5",
+                    "Grade 6",
+                     "Grade 7",
+                     "Grade 8",
+                     "Grade 9"
+                                 ],
+                  "default": "Grade 1"
+                },
+                "desrciption": {
+                  "type": "string",
+                  "description": "Description of the course"
+                },
+                "instructor": {
+                  "type": "string",
+                  "description": "instructor name of the course"
+                },
+                       "required": [
+                "tittle",
+                "category",
+                "description",
+                "instructor"
+              ]
             }
-        }
-    }
+      
 
- }
+            
+        },
+
+        "parents": {
+          "type": "object",
+          "properties": {
+            "email": {
+              "type": "string",
+              "description": "email of the parent"
+            },
+  
+                 "parentContact":{
+                         "type":"string",
+                      "description":"contact of the parent"
+                   },
+  
+                 
+    "parentName":{
+                         "type":"string",
+                      "description":"name of the parent"
+                   },
+  
+                     "category": {
+              "type": "string",
+                        "enum": {
+                "values": [
+                  "Grade 1",
+                  "Grade 2",
+                  "Grade 3",
+                  "Grade 4",
+                 "Grade 5",
+               "Grade 6",
+               "Grade 7",
+             "Grade 8",
+              "Grade 9"
+                ],
+                "message": "{values} is not a valid course category"
+              },
+              "default": "Grade 1"
+            }},
+            "required": [
+             "parentName",
+             "email",
+            "childName",
+            "category",
+            "parentContact"
+        ]
+      }
+      
+    }  
+  }
+}
+      
+    
+
+ 
 
  
 
