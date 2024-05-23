@@ -19,7 +19,7 @@
         "url":"https://github.com/Espebob/Parents-Follow-Ups.git",
         "description":"Find more info here"
     },
-    "basePath":"/parent",
+    "basePath":"/followup",
     "servers":[
         {
             "url":"http://localhost:3500",
@@ -434,7 +434,7 @@
         }
       }
     },
-    "/course/getByCategory/{category}":{
+    "/course/get/{category}":{
       "get":
       {
           "tags":["course"],
@@ -945,21 +945,19 @@
                                  ],
                   "default": "Grade 1"
                 },
-                "desrciption": {
-                  "type": "string",
-                  "description": "Description of the course"
-                },
+
                 "instructor": {
                   "type": "string",
                   "description": "instructor name of the course"
-                },
-                       "required": [
-                "tittle",
-                "category",
-                "description",
-                "instructor"
-              ]
-            }
+                }
+                 
+            },
+            "required": [
+              "tittle",
+              "category",
+              "description",
+              "instructor"
+            ]
       
 
             

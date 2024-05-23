@@ -32,12 +32,12 @@ export const signInValidation=[
 ];
 
 export const testValidation = [
-    body("courseName","the name of the course is required").not().isEmpty()
+    body("tittle", " tittle is required").not().isEmpty()
    
 ];
 
 export const addCourseValidation = [
-    body("courseName", "Course name is required").not().isEmpty()
+    body("tittle", " tittle is required").not().isEmpty()
 
 ];
 

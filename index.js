@@ -21,7 +21,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 app.use("/api_docs",swaggerUi.serve, swaggerUi.setup(documentation))
-app.use('/parent',router);
+app.use('/followup',router);
 mongoose.connect(`${process.env.db}`)
 .then(()=>
 {

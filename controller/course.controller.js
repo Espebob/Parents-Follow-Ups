@@ -1,4 +1,4 @@
-import serviceModel from "../model/service.model.js";
+import courseModel from "../model/course.model.js";
 import { validationResult } from "express-validator";
 import asyncWrapper from "../middleware/async.js";
 import { BadRequestError } from "../error/BadRequestError.js";
@@ -22,10 +22,10 @@ export const test = (req, res, next) => {
 
     export const getAllCourses =  async (req, res, next) => {
         try{
-            const getServices = await courseModel.find();
+            const getCourses = await courseModel.find();
             if(getCourses){
                 return res.status(200).json({
-                    size: getServices.length,
+                    size: getCourses.length,
                     getCourses
                 })
             }
