@@ -2,7 +2,7 @@ import courseModel from "../model/course.model.js";
 import { validationResult } from "express-validator";
 import asyncWrapper from "../middleware/async.js";
 import { BadRequestError } from "../error/BadRequestError.js";
-import { NotFoundError } from "../error/NotFoundError.js";
+//import { NotFoundError } from "../error/NotFoundError.js";
 
 export const test = (req, res, next) => {
     res.send('hello');
@@ -51,7 +51,7 @@ export const test = (req, res, next) => {
     }
 
     export const findCourseCategory = async (req, res, next) => {
-        const courseCategory = req.query.category;
+        const courseCategory = req.params.category;
         
         try {
             const foundCourse = await courseModel.find({category:courseCategory});

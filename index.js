@@ -18,14 +18,17 @@ dotenv.config()
 
 
 const app = express();
-app.use(cors({
-    origin: "*",
-        credentials: true,
-        allowedHeaders: ['Content-Type', 'Authorization'],
-        methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
-        preflightContinue: false,
-        optionsSuccessStatus: 204,
-}));
+app.use(cors());
+
+//app.use(cors({
+ //   origin: ["https://parents-follow-u.onrender.com", "http://localhost:3500"],
+  //      credentials: true,
+  //      allowedHeaders: ['Content-Type', 'Authorization'],
+   //     methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
+    //    preflightContinue: false,
+    //    optionsSuccessStatus: 204,
+//}));
+
 app.use(express.json());
 app.use("/api_docs",swaggerUi.serve, swaggerUi.setup(documentation))
 app.use('/followup',router);
