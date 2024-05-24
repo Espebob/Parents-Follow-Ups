@@ -669,7 +669,7 @@
                     "schema": {
                       "type": "array",
                       "items": {
-                        "$ref": "#/components/schemas/Parenst"
+                        "$ref": "#/components/schemas/Parents"
                       }
                     }
                   }
@@ -726,7 +726,7 @@
             }
           }
         },
-        "/parents/getByCategory/{category}":{
+        "/parents/get/{category}":{
           "get":
           {
             "tags":["parent"],
@@ -782,7 +782,7 @@
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/components/schemas/parents"
+                            "$ref": "#/components/schemas/Parents"
                         }
                     },
                     {
@@ -798,7 +798,7 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "$ref": "#/components/schemas/parents"
+                                "$ref": "#/components/schemas/Parents"
                             }
                         }
                     }
@@ -809,7 +809,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/parents"
+                                    "$ref": "#/components/schemas/Parents"
                                 }
                             }
                         }
@@ -855,7 +855,7 @@
                 "content": {
                   "application/json": {
                     "schema": {
-                      "$ref": "#/components/schemas/parents"
+                      "$ref": "#/components/schemas/Parents"
                     }
                   }
                 }
@@ -930,6 +930,13 @@
                   "type": "string",
                   "description": "Summary of what the course is about"
                 },
+               
+
+                "instructor": {
+                  "type": "string",
+                  "description": "instructor name of the course"
+                },
+
                 "category": {
                   "type": "string",
                   "enum": [
@@ -944,11 +951,6 @@
                      "Grade 9"
                                  ],
                   "default": "Grade 1"
-                },
-
-                "instructor": {
-                  "type": "string",
-                  "description": "instructor name of the course"
                 }
                  
             },
@@ -963,10 +965,10 @@
             
         },
 
-        "parents": {
+        "Parents": {
           "type": "object",
           "properties": {
-            "email": {
+            "parentEmail": {
               "type": "string",
               "description": "email of the parent"
             },
@@ -978,13 +980,18 @@
   
                  
     "parentName":{
-                         "type":"string",
-                      "description":"name of the parent"
-                   },
+        "type":"string",
+        "description":"name of the parent"
+           },
+
+           "childName":{
+            "type":"string",
+            "description":"name of the child"
+               },
   
                      "category": {
               "type": "string",
-                        "enum": {
+              "enum": {
                 "values": [
                   "Grade 1",
                   "Grade 2",

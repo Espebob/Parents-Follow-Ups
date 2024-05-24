@@ -6,7 +6,7 @@ courseRoute.post("/test", testValidation, test);
 courseRoute.post("/add", addCourseValidation, addNewCourse);
 courseRoute.get("/list", getAllCourses);
 courseRoute.get("/get/:id", getCourseById);
-courseRoute.get("/get", findCourseCategory);
+courseRoute.get("/get/:category", findCourseCategory);
 courseRoute.put("/update/:id", updateCourse);
 courseRoute.delete("/delete/:id", deleteCourse);
 

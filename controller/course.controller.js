@@ -50,23 +50,25 @@ export const test = (req, res, next) => {
           }
     }
 
+      
     export const findCourseCategory = async (req, res, next) => {
         const courseCategory = req.params.category;
-        
-        try {
-            const foundCourse = await courseModel.find({category:courseCategory});
+        try{
+            const foundCourse = await courseModel.find({category: courseCategory});
             return res.status(200).json({
                 size: foundCourse.length,
                 foundCourse
             });
-        } catch (error) {
+        } catch (error){
             next(error);
         }
     }
+
+
       export const updateCourse = async(req, res, next) => {
         try {
             const updatedCourse = await courseModel.findByIdAndUpdate(req.params.id, req.body,{set:true});
-               if(!updatedService) {
+               if(!updatedCourse) {
                 return next(new NotFoundError(`Course not found`));
                }
                return  res.status(200).json(updatedCourse)

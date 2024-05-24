@@ -42,8 +42,8 @@ export const addCourseValidation = [
 ];
 
 export const addNewParentValidation = [
-    body("email", "email is required").not().isEmpty(),
-    body("password", "password is required").not().isEmpty(),
+    body("parentEmail", "Parent email is required").not().isEmpty(),
+    //body("password", "password is required").not().isEmpty(),
     body("category", "Course category is required").not().isEmpty()
     
 ];

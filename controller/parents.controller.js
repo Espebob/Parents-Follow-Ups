@@ -19,7 +19,7 @@ export const addNewParent = asyncWrapper(async (req, res, next) => {
  export const getAllParents =  async (req, res, next) => {
      try{
          const getParents = await parentsModel.find();
-         if(getparents){
+         if(getParents){
              return res.status(200).json({
                  size: getParents.length,
                  getParents
