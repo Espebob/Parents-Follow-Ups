@@ -54,7 +54,7 @@ export const test = (req, res, next) => {
         const courseCategory = req.query.category;
         
         try {
-            const foundCourse = await courseModel.find({category: courseCategory});
+            const foundCourse = await courseModel.find({category:courseCategory});
             return res.status(200).json({
                 size: foundCourse.length,
                 foundCourse

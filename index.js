@@ -19,7 +19,7 @@ dotenv.config()
 
 const app = express();
 app.use(cors({
-    origin: ["https://parents-follow-u.onrender.com", "http://localhost:3500"],
+    origin: "*",
         credentials: true,
         allowedHeaders: ['Content-Type', 'Authorization'],
         methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
