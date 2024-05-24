@@ -18,7 +18,7 @@ dotenv.config()
 
 
 const app = express();
-app.use(cors(corsOptions));
+app.use(cors(corsOptions)); //calling corsOptions
 
 //app.use(cors({
  //   origin: ["https://parents-follow-u.onrender.com", "http://localhost:3500"],
