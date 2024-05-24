@@ -1,5 +1,5 @@
 import parentsModel from "../model/parents.model.js";
-import { NotFoundError, BadRequestError } from "../error/index.js";
+//import { NotFoundError, BadRequestError } from "../error/index.js";
 import { validationResult } from "express-validator";
 import asyncWrapper from "../middleware/async.js";
 
