@@ -877,6 +877,51 @@
               }
             }
           }
+        },
+        "/book/add": {
+          "post": {
+            "tags": [
+              "book"
+            ],
+            "summary": "Add a new book",
+            "description": "add a new book with  the provided details",
+            "parameters": [
+             
+              {
+                "bookName": "serviceName",
+                "in": "formData",
+                "required": true,
+                "type":"string"
+              },
+              {
+                "name": "image",
+                "in": "formData",
+                "required": true,
+                "type":"file"
+              },
+              {
+                "name": "description",
+                "in": "formData",
+                "required": true,
+                "type":"string"
+              },
+              {
+                "name": "writerName",
+                "in": "formData",
+                "required": true,
+                "type":"string"
+              }
+             
+            ],
+            "responses": {
+              "200": {
+                "description": "Service added successfully"
+              },
+              "401": {
+                "description": "Bad request -Validation error"
+              }
+            }
+          }
         }
       },
     
