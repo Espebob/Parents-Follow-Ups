@@ -129,7 +129,7 @@ export const Logout=asyncWrapper(async(req,res,next)=>
         return next(new BadRequestError(errors.array()[0].msg))
     }
 
-  
+  //token
   //Clear the token from the database
   UserModel.token = null; 
   await UserModel.save(); 
