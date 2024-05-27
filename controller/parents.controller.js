@@ -1,5 +1,5 @@
 import parentsModel from "../model/parents.model.js";
-//import { NotFoundError, BadRequestError } from "../error/index.js";
+import { notfoundError, BadRequestError } from "../error/index.js";
 import { validationResult } from "express-validator";
 import asyncWrapper from "../middleware/async.js";
 
@@ -35,7 +35,7 @@ export const addNewParent = asyncWrapper(async (req, res, next) => {
      try{
          const foundParent = await parentsModel.findById(req.params.id)
          if (!foundParent) {
-             return next(new NotFoundError(`Parent not found`))
+             return next(new notfoundError(`Parent not found`))
          }
          
            return  res.status(200).json(foundParent)
@@ -63,7 +63,7 @@ export const addNewParent = asyncWrapper(async (req, res, next) => {
      try {
          const updatedParent = await parentsModel.findByIdAndUpdate(req.params.id, req.body,{set:true});
             if(!updatedParent) {
-             return next(new NotFoundError(`Parent not found`));
+             return next(new notfoundError(`Parent not found`));
             }
             return  res.status(200).json(updatedParent)
          }
