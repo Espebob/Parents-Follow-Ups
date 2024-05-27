@@ -6,12 +6,7 @@ import {validationResult} from 'express-validator';
 import {sendEmail} from '../utils/sendEmail.js';
 import bcryptjs from 'bcryptjs';
 import jwt from "jsonwebtoken";
-import Token from "../model/authTokenModel.js";
-import dotenv from "dotenv"
-import { BadRequestError } from "../error/BadRequestError.js";
-dotenv.config();
-
-export const SignUp=asyncWrapper(async(req,res,next)=>
+import Token from "../model/authTokenModel.js";export const SignUp=asyncWrapper(async(req,res,next)=>
 {
 // validation
     const errors= validationResult(req);
@@ -134,7 +129,7 @@ export const Logout=asyncWrapper(async(req,res,next)=>
         return next(new BadRequestError(errors.array()[0].msg))
     }
 
-  
+  //token
   //Clear the token from the database
   UserModel.token = null; 
   await UserModel.save(); 
