@@ -54,7 +54,7 @@ export const test = (req, res, next) => {
     export const findCourseCategory = async (req, res, next) => {
         const courseCategory = req.params.category;
         try{
-            const foundCourse = await courseModel.find({category: courseCategory});
+            const foundCourse = await courseModel.findOne({category: courseCategory});
             return res.status(200).json({
                 size: foundCourse.length,
                 foundCourse
