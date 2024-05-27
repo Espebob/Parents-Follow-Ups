@@ -888,7 +888,7 @@
             "parameters": [
              
               {
-                "bookName": "serviceName",
+                "name": "bookName",
                 "in": "formData",
                 "required": true,
                 "type":"string"
@@ -915,20 +915,243 @@
             ],
             "responses": {
               "200": {
-                "description": "Service added successfully"
+                "description": "Book added successfully"
               },
               "401": {
                 "description": "Bad request -Validation error"
               }
             }
           }
+        },
+      
+    
+
+    
+    "/book/list": {
+          "get": {
+            "tags": [
+              "book"
+            ],
+            "summary": "Get all books",
+            "description": "Returns all the books",
+            "responses": {
+              "200": {
+                "description": "All the books",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/book"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+    
+    
+        "/book/get/{id}": {
+          "get": {
+            "tags": [
+              "book"
+            ],
+            "summary": "Get a book by id",
+            "description": "Returns a book with the provided id",
+            "parameters": [
+              {
+                "name": "id",
+                "in": "path",
+                "required": true,
+                "schema": {
+                  "type": "string"
+                }
+              }
+            ],
+            "responses": {
+              "200": {
+                "description": "book found",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "$ref": "#/components/schemas/book"
+                    }
+                  }
+                }
+              },
+              "404": {
+                "description": "book not found",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "type": "object",
+                      "properties": {
+                        "message": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "/book/get/{category}":{
+          "get":
+          {
+            "tags":["book"],
+            "summary":"Get a book by book category",
+            "description":"Returns a book with the provided Category",
+            "parameters":[
+                {
+                    "name":"category",
+                    "in":"path",
+                    "required":true,
+                    "schema":{
+                        "type":"string"
+                    }
+                  }
+                  ],
+                  "responses": {
+                    "200": {
+                      "description": "book found",
+                      "content": {
+                        "application/json": {
+                          "schema": {
+                            "$ref": "#/components/schemas/book"
+                          }
+                        }
+                      }
+                    },
+                    "404": {
+                      "description": "book not found",
+                      "content": {
+                        "application/json": {
+                          "schema": {
+                            "type": "object",
+                            "properties": {
+                              "message": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+        "/book/update/{id}": {
+          "put":{
+            "tags": ["book"],
+                "summary": "Update book",
+                "description": "Update book with the provided details",
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/components/schemas/book"
+                        }
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/book"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "book Updated",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/book"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "book not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
         }
-      },
-    
-   
+        },
+        "/book/delete/{id}": {
+          "delete": {
+            "tags": [
+              "book"
+            ],
+            "summary": "Delete a  book",
+            "description": "Delete a book with the provided id",
+            "parameters": [
+              {
+                "name": "id",
+                "in": "path",
+                "required": true,
+                "schema": {
+                  "type": "string"
+                }
+              }
+            ],
+            "responses": {
+              "200": {
+                "description": "book deleted",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "$ref": "#/components/schemas/book"
+                    }
+                  }
+                }
+              },
+              "404": {
+                "description": "book not found",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "type": "object",
+                      "properties": {
+                        "message": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }},
 
-
-    
     "components":{
         "schemas":
         {
@@ -1059,11 +1282,46 @@
             "category",
             "parentContact"
         ]
-      }
+      },
+
+      "book": {
+        "type": "object",
+        "properties": {
+          "bookName": {
+            "type": "string",
+            "description": "name of the book"
+          },
+
+               
+               
+  "description":{
+      "type":"string",
+      "description":"description of the book"
+         },
+
+         "image":{
+          "type":"string",
+          "description":"name of the book"
+             },
+             
+         "writername":{
+          "type":"string",
+          "description":"writer of the book"
+             }
+
+          }},
+          "required": [
+           "bookName",
+           "description",
+          "image",
+          "writeName"
+         
+      ]
+    }
       
     }  
   }
-}
+
       
     
 
