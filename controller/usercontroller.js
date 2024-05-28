@@ -3,6 +3,7 @@ import asyncWrapper from "../middleware/async.js";
 import { otpGenerator } from "../utils/otp.js";
 import {UnauthorizedError} from '../error/Unauthorized.js'
 import {validationResult} from 'express-validator';
+import { BadRequestError } from "../error/BadRequestError.js";
 import {sendEmail} from '../utils/sendEmail.js';
 import bcryptjs from 'bcryptjs';
 import jwt from "jsonwebtoken";
