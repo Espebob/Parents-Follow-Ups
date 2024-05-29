@@ -1,5 +1,5 @@
  // Ensure the path is correct
-import { NotFoundError, BadRequestError } from "../error/index.js";
+import { notfoundError, BadRequestError } from "../error/index.js";
 import { validationResult } from "express-validator";
 import asyncWrapper from "../middleware/async.js";
 import cloudinary from "../utils/cloudinary.js";
@@ -49,7 +49,7 @@ export const getBookById = async (req, res, next) => {
     try {
         const foundBook = await bookModel.findById(req.params.id);
         if (!foundBook) {
-            return next(new NotFoundError(`Book not found`));
+            return next(new notfoundError(`Book not found`));
         }
         return res.status(200).json(foundBook);
     } catch (error) {
@@ -74,7 +74,7 @@ export const updateBook = async (req, res, next) => {
     try {
         const updatedBook = await bookModel.findByIdAndUpdate(req.params.id, req.body, { new: true });
         if (!updatedBook) {
-            return next(new NotFoundError(`Book not found`));
+            return next(new notFoundError(`Book not found`));
         }
         return res.status(200).json(updatedBook);
     } catch (error) {

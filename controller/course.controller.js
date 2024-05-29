@@ -2,7 +2,7 @@ import courseModel from "../model/course.model.js";
 import { validationResult } from "express-validator";
 import asyncWrapper from "../middleware/async.js";
 import { BadRequestError } from "../error/BadRequestError.js";
-//import { NotFoundError } from "../error/NotFoundError.js";
+import { notfoundError } from "../error/notfoundError.js";
 
 export const test = (req, res, next) => {
     res.send('hello');
@@ -39,7 +39,7 @@ export const test = (req, res, next) => {
         try{
             const foundCourse = await courseModel.findById(req.params.id)
             if (!foundCourse) {
-                return next(new NotFoundError(`Course not found`))
+                return next(new notfoundError(`Course not found`))
             }
             
               return  res.status(200).json(foundCourse)
@@ -54,7 +54,7 @@ export const test = (req, res, next) => {
     export const findCourseCategory = async (req, res, next) => {
         const courseCategory = req.params.category;
         try{
-            const foundCourse = await courseModel.find({category: courseCategory});
+            const foundCourse = await courseModel.findOne({category: courseCategory});
             return res.status(200).json({
                 size: foundCourse.length,
                 foundCourse
@@ -69,7 +69,7 @@ export const test = (req, res, next) => {
         try {
             const updatedCourse = await courseModel.findByIdAndUpdate(req.params.id, req.body,{set:true});
                if(!updatedCourse) {
-                return next(new NotFoundError(`Course not found`));
+                return next(new notfoundError(`Course not found`));
                }
                return  res.status(200).json(updatedCourse)
             }

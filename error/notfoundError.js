@@ -1,5 +1,5 @@
 import CustomError from "./customError.js";
-export class NotFoundError extends CustomError {
+export class notfoundError extends CustomError {
     constructor(message) {
         super(message);
         this.statusCode = 404;
