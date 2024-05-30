@@ -13,7 +13,7 @@ const instructorSchema = new Schema({
         required: true
     },
      
-    insturctorContact:{
+    instructorContact:{
         type:String,
         required: true
     },

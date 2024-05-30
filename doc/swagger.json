@@ -1752,7 +1752,7 @@
                
   "instructorName":{
       "type":"string",
-      "description":"name of the parent"
+      "description":"name of the instructor"
          },
          "course":{
           "type":"string",
@@ -1761,7 +1761,7 @@
 },
           "required": [
            "instructorName",
-           "instructoremail",
+           "instructorEmail",
            "instructorContact",
            "course"
           
