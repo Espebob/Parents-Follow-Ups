@@ -132,8 +132,8 @@ export const Logout=asyncWrapper(async(req,res,next)=>
 
   //token
   //Clear the token from the database
-  UserModel.token = null; 
-  await UserModel.save(); 
+  //UserModel.token = null; 
+  //await UserModel.save(); 
 
   res.status(200).json({ message: 'Logout successful' });  
 })
