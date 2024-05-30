@@ -806,7 +806,7 @@
                       "content": {
                         "application/json": {
                           "schema": {
-                            "$ref": "#/components/schemas/Courses"
+                            "$ref": "#/components/schemas/Parents"
                           }
                         }
                       }
@@ -1218,6 +1218,243 @@
             }
           }
         },
+         
+        "/instructor/add": {
+          "post": {
+            "tags": [
+              "instructor"
+            ],
+            "summary": "Add a new instructor",
+            "description": "add a new instructor with  the provided details",
+            "parameters": [
+              {
+                "name": "body",
+                "in": "body",
+                "required": true,
+                "schema": {
+                  "$ref": "#/components/schemas/instructor"
+                }
+              }
+            ],
+            "requestBody": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/instructor"
+                  }
+                }
+              }
+            },
+            "responses": {
+              "201": {
+                "description": "an instructor added successfully",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "$ref": "#/components/schemas/instructor"
+                    }
+                  }
+                }
+              },
+              "400": {
+                "description": "Bad request -Validation error",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "type": "object",
+                      "properties": {
+                        "message": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+    "/instructor/list": {
+          "get": {
+            "tags": [
+              "instructor"
+            ],
+            "summary": "Get all instructors",
+            "description": "Returns all the instructors",
+            "responses": {
+              "200": {
+                "description": "All the instructors",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/instructor"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+    
+    
+        "/instructor/get/{id}": {
+          "get": {
+            "tags": [
+              "instructor"
+            ],
+            "summary": "Get an instructor by id",
+            "description": "Returns an instructor with the provided id",
+            "parameters": [
+              {
+                "name": "id",
+                "in": "path",
+                "required": true,
+                "schema": {
+                  "type": "string"
+                }
+              }
+            ],
+            "responses": {
+              "200": {
+                "description": "instructor found",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "$ref": "#/components/schemas/instructor"
+                    }
+                  }
+                }
+              },
+              "404": {
+                "description": "instructor not found",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "type": "object",
+                      "properties": {
+                        "message": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        
+        "/instructor/update/{id}": {
+          "put":{
+            "tags": ["instructor"],
+                "summary": "Update instructor",
+                "description": "Update an instructor with the provided details",
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/components/schemas/instructor"
+                        }
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/instructor"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "instructor Updated",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/insturctor"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "instructor not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+        }
+        },
+        "/instructor/delete/{id}": {
+          "delete": {
+            "tags": [
+              "instructor"
+            ],
+            "summary": "Delete an instructor",
+            "description": "Delete an instructor with the provided id",
+            "parameters": [
+              {
+                "name": "id",
+                "in": "path",
+                "required": true,
+                "schema": {
+                  "type": "string"
+                }
+              }
+            ],
+            "responses": {
+              "200": {
+                "description": "instructor deleted",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "$ref": "#/components/schemas/instructor"
+                    }
+                  }
+                }
+              },
+              "404": {
+                "description": "instructor not found",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "type": "object",
+                      "properties": {
+                        "message": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+
       "/contactus/contact":{
         "post": {
           "tags": ["contact us"],
@@ -1294,6 +1531,9 @@
           
         }
       },
+     
+        
+
       "/contactus/delete/{id}":{
         "delete":{
           "tags":["contact us"],
@@ -1496,6 +1736,38 @@
         ]
       },
 
+      "instructor": {
+        "type": "object",
+        "properties": {
+          "instructorEmail": {
+            "type": "string",
+            "description": "email of the instructor"
+          },
+
+               "instructorContact":{
+                       "type":"string",
+                    "description":"contact of the parent"
+                 },
+
+               
+  "instructorName":{
+      "type":"string",
+      "description":"name of the parent"
+         },
+         "course":{
+          "type":"string",
+      "description":"name of the course"
+         }
+},
+          "required": [
+           "instructorName",
+           "instructoremail",
+           "instructorContact",
+           "course"
+          
+      ]
+    },
+
       "book": {
         "type": "object",
         "properties": {
@@ -1515,6 +1787,10 @@
           "type":"string",
           "description":"name of the book"
              },
+             "url":{
+              "type":"string",
+              "description":"url link of the book"
+             },
              
          "writername":{
           "type":"string",
@@ -1526,6 +1802,7 @@
            "bookName",
            "description",
           "image",
+          "url",
           "writeName"
          
       ]

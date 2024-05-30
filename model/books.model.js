@@ -18,6 +18,10 @@ const bookSchema = new Schema({
     writerName: {
         type: String,
         required: true
+    },
+    url:{
+        type:String,
+        required: true
     }
 });
 

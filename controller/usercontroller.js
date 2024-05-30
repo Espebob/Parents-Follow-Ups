@@ -100,11 +100,11 @@ export const SignIn=asyncWrapper(async(req,res,next)=>
         return next(new BadRequestError('Invalid Email or password'))
 
     };
-    //check account verification
-     if(FoundUser.verified==false)
-     {
-         return next(new BadRequestError('Account is not verified'))
-     }
+    // //check account verification
+    // / if(FoundUser.verified==false)
+    //  {
+    //      return next(new BadRequestError('Account is not verified'))
+    //  }
     //Verify password
     const isPasswordVerified= await bcryptjs.compareSync(req.body.password,FoundUser.password)
     if(!isPasswordVerified)

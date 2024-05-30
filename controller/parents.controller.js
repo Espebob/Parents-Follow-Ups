@@ -47,7 +47,7 @@ export const addNewParent = asyncWrapper(async (req, res, next) => {
  }
 
  export const findParentByCategory = async (req, res, next) => {
-     const courseCtegory = req.params.category;
+     const courseCategory = req.params.category;
      
      try {
          const foundParent = await parentsModel.find({category: courseCategory});

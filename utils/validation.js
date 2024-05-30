@@ -53,3 +53,11 @@ export const contactValidationRules = [
     body('email').isEmail().withMessage('Please enter a valid email address'),
     body('message').notEmpty().withMessage('Message is required')
 ];
+
+export const addNewInstructorValidation = [
+    body("instructorEmail", "Instructor email is required").not().isEmpty(),
+    //body("password", "password is required").not().isEmpty(),
+    //body("category", "Instructor category is required").not().isEmpty()
+    
+];
+
