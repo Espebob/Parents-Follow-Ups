@@ -308,7 +308,65 @@
                 }
         }
     },
-   
+
+    "/user/logout":
+    {
+        "post":{
+  "tags":["user"],
+  "summary":"User logged out from the system",
+  "description":"logout",
+  "parameters": [
+    {
+        "name": "body",
+        "in": "body",
+        "required": true,
+        "schema": {
+            "$ref": "#/components/schemas/User"
+        }
+    }],
+    "requestBody":{
+        "content":{
+            "application/json":{
+                "schema":{
+                    "$ref":"#/components/schemas/User"
+                }
+            }
+        }
+    },
+    "responses":{
+        "200":{
+            "description":"User logged out successfully",
+            "content":{
+              "application/json":{
+                "schema":{
+                  "$ref":"#/components/schemas/User"
+                }
+              }
+            }
+          },
+          "400":{
+            "description":"Bad request -Validation error",
+            "content":{
+              "application/json":{
+                "schema":{
+                  "type":"object",
+                  "properties":{
+                    "message":{
+                      "type":"string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+    
+    }
+    
+
+}
+    },
+
+
     "/course/add": {
       "post": {
         "tags": [
@@ -913,6 +971,15 @@
               }
              
             ],
+            "requestBody":{
+              "content":{
+                "application/json":{
+                  "schema":{
+                    "$ref": "#/components/schemas/book"
+                  }
+                }
+              }
+            },
             "responses": {
               "200": {
                 "description": "Book added successfully"
@@ -1150,7 +1217,127 @@
               }
             }
           }
-        }},
+        },
+      "/contactus/contact":{
+        "post": {
+          "tags": ["contact us"],
+          "summary":"Add new message",
+          "description":"add a new message",
+          "parameters":[
+            {
+              "name":"body",
+              "in":"body",
+              "schema":{
+                "$ref":"#/components/schemas/contactus"
+              }
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/contactus"
+
+                }
+              }
+            }
+          },
+          "responses":{
+            "201":{
+              "description":"message added successfully",
+              "content":{
+                "application/json":{
+                  "schema":{
+                    "$ref":"#/components/schemas/contactus"
+                  }
+                }
+              }
+            },
+            "400":{
+              "description":"bad request",
+              "content":{
+                "application/json":{
+                  "schema":{
+                    "type":"object",
+                    "properties":{
+                      "message":{
+                        "type":"string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/contactus/listMessage":{
+        "get":{
+          "tags":["contact us"],
+          "summary":"list all messages",
+          "description":"list all message sent",
+          "responses":{
+            "200":{
+              "description":"list all messages",
+              "content":{
+                "application/json":{
+                  "schema":{
+                    "type":"array",
+                    "items":{
+                      "$ref":"#/components/schemas/contactus"
+                    }
+                  }
+                }
+              }
+            }
+          }
+          
+        }
+      },
+      "/contactus/delete/{id}":{
+        "delete":{
+          "tags":["contact us"],
+          "summary":"delete message by id",
+          "description":"delete message by id",
+          "parameters": [{
+            "name": "id",
+            "in":"path",
+            "required":true,
+            "schema":{
+              "type":"string"
+            }
+
+          }],
+          "responses":{
+            "200":{
+              "description":"delete message by id",
+              "content":{
+                "application/json":{
+                  "schema":{
+                    "$ref":"#/components/schemas/contactus"
+                  }
+                }
+              }
+            },
+            "404":{
+              "description":"message not found",
+              "content":{
+                "application/json":{
+                  "schema":{
+                    "type":"object",
+                    "properties":{
+                      "message":{
+                        "type":"string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+      },
 
     "components":{
         "schemas":
@@ -1231,6 +1418,31 @@
       
 
             
+        },
+        "contactus":{
+          "type": "object",
+          "properties": {
+            "fullName":{
+              "type": "string",
+              "description":"fullname of user"
+            },
+            "email":{
+              "type": "string",
+              "description":"email of the User"
+            },
+
+            "subject":{
+              "type": "string",
+              "description":"Subject of the message"
+            },
+
+            "message":{
+              "type": "string",
+              "description":"message to be sent"
+            }
+           
+          },
+          "required":["fullname","email","subject","message"]
         },
 
         "Parents": {

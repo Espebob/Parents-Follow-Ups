@@ -47,3 +47,9 @@ export const addNewParentValidation = [
     body("category", "Course category is required").not().isEmpty()
     
 ];
+
+export const contactValidationRules = [
+    body('fullName').notEmpty().withMessage('Full name is required'),
+    body('email').isEmail().withMessage('Please enter a valid email address'),
+    body('message').notEmpty().withMessage('Message is required')
+];

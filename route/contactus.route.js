@@ -1,12 +1,14 @@
-import express from "express";
-import { addNewContact, getAllContacts, getContactById, updateContact, deleteContact } from "../controller/contactus.controller.js"; // Verify this path
+// routes/contactRoutes.js
+import express from 'express';
+import { createContactMessage, listContactMessages, deleteMessage, searchMessages } from '../controller/contactus.controller.js';
+import { contactValidationRules } from '../utils/validation.js';
+
 
 const contactRoute = express.Router();
 
-contactRoute.post("/add", addNewContact);
-contactRoute.get("/list", getAllContacts);
-contactRoute.get("/get/:id", getContactById);
-contactRoute.put("/update/:id", updateContact);
-contactRoute.delete("/delete/:id", deleteContact);
+contactRoute.post('/contact', contactValidationRules, createContactMessage);
+contactRoute.get('/listMessage', listContactMessages);
+contactRoute.delete('/delete/:id', deleteMessage);
+contactRoute.get('/search-message',searchMessages);
 
 export default contactRoute;
