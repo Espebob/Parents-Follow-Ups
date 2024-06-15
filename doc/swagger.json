@@ -964,6 +964,12 @@
                 "type":"string"
               },
               {
+                "name": "url",
+                "in": "formData",
+                "required": true,
+                "type":"string"
+              },
+              {
                 "name": "writerName",
                 "in": "formData",
                 "required": true,
