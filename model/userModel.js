@@ -26,10 +26,10 @@ const userSchema=new schema({
         type:String,
         required:true,
         enum:{
-            values:['parent', 'instructor'],
-            message:'Role must be parent or instructor'
+            values:['parent', 'admin'],
+            message:'Role must be either parent or admin'
         },
-        default:'instructor'
+        default:'choose role'
     },
     
     otp:{

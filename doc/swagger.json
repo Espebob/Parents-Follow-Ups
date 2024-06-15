@@ -1607,7 +1607,7 @@
                     {
                         "type":"string",
                         "description":"role of the User",
-                        "default":"instructor or parent"
+                        "default":"choose role"
 
                     }
                 },
