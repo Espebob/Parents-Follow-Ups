@@ -25,10 +25,7 @@ const userSchema=new schema({
     role:{
         type:String,
         required:true,
-        enum:{
-            values:['parent', 'admin'],
-            message:'Role must be either parent or admin'
-        },
+       
         default:'choose role'
     },
     
